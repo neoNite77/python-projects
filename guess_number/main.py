@@ -24,11 +24,43 @@ def guess(number):
             print("Sorry, guess again. Too high.")
     return f"Yay! You guessed the right number! {random_number} is correct!"
 
+def computer_guess(x):
+    low = 1
+    high = x
+    feedback = ''
+
+    while feedback != 'C':
+        guess = random.randint(low, high)
+        feedback = input(f'Is {guess} too high (H), too low (L), or correct (C)??').lower()
+        if feedback == 'h':
+            high = guess - 1
+        elif feedback == 'l':
+            low = guess + 1
+    return f"The computer has guessed your number correctly! {guess} is your number!"
+
 def main():
-    number = 0
-    while number < 1:
-        number = int(input("Hello! Please enter a number greater than 1:"))
-    print(guess(number))
+    print("Hello, welcome to number guesser!")
+    print("---------------------------------")
+    print("1.) Guess computer's number")
+    print("2.) Computer guesses player's number")
+    print("3.) Exit program")
+    while True:
+        choice = int(input("Enter a menu option: "))
+        if choice == 1:
+            number = 0
+            while number < 1:
+                number = int(input("Hello! Please enter a number greater than 1:"))
+            print(guess(number))
+        elif choice == 2:
+            number = 0
+            while number < 1:
+                number = int(input("Hello! Please enter a number greater than 1:"))
+            print(computer_guess(number))
+        elif choice == 3:
+            print("Exiting program...")
+            break
+        else:
+            print("Invalid menu option entered. Try again!")
 
 if __name__ == "__main__":
     main()
