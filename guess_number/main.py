@@ -24,13 +24,25 @@ def guess(number):
             print("Sorry, guess again. Too high.")
     return f"Yay! You guessed the right number! {random_number} is correct!"
 
+"""
+    Computer guesses random number until it guesses correctly
+
+    precondition: number > 1
+    postcondition: returns a printed statement of the random number
+"""
+
 def computer_guess(x):
     low = 1
     high = x
     feedback = ''
 
-    while feedback != 'C':
-        guess = random.randint(low, high)
+    # Computer will keep guessing until 
+    while feedback != 'c':
+        if low != high:
+            guess = random.randint(low, high)
+        else:
+            # could be either low or high
+            guess = low
         feedback = input(f'Is {guess} too high (H), too low (L), or correct (C)??').lower()
         if feedback == 'h':
             high = guess - 1
