@@ -36,7 +36,7 @@ def computer_guess(x):
     high = x
     feedback = ''
 
-    # Computer will keep guessing until 
+    # Computer will keep guessing until user enters c
     while feedback != 'c':
         if low != high:
             guess = random.randint(low, high)
@@ -51,28 +51,31 @@ def computer_guess(x):
     return f"The computer has guessed your number correctly! {guess} is your number!"
 
 def main():
-    print("Hello, welcome to number guesser!")
-    print("---------------------------------")
-    print("1.) Guess computer's number")
-    print("2.) Computer guesses player's number")
-    print("3.) Exit program")
+    display_menu()
     while True:
         choice = int(input("Enter a menu option: "))
         if choice == 1:
             number = 0
             while number < 1:
-                number = int(input("Hello! Please enter a number greater than 1:"))
+                number = int(input("Hello! Please enter a number greater than 1: "))
             print(guess(number))
         elif choice == 2:
             number = 0
             while number < 1:
-                number = int(input("Hello! Please enter a number greater than 1:"))
+                number = int(input("Hello! Please enter a number greater than 1: "))
             print(computer_guess(number))
         elif choice == 3:
             print("Exiting program...")
             break
         else:
             print("Invalid menu option entered. Try again!")
+
+def display_menu():
+    print("Hello, welcome to number guesser!")
+    print("---------------------------------")
+    print("1.) Guess computer's number")
+    print("2.) Computer guesses player's number")
+    print("3.) Exit program")
 
 if __name__ == "__main__":
     main()
