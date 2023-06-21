@@ -2,13 +2,12 @@
     Date: June 20, 2023
     Description: Program will run as a madlibs game where users can enter input
 """
-
 import random
+import madlibsTemplates
 
 """
     Start the regular mad labs game.
 """
-
 
 def madLibs():
     print("\nWelcome to Mad Libs!")
@@ -21,25 +20,34 @@ def madLibs():
     # Store input into a formatted string
     statement1 = f"My name is {name}. I am very {adj}!"
 
-    print(statement1)
+    print(statement1 + "\n")
 
+def randomMadLibs():
+    print("\nYou are playing random Mad Labs!")
+    print("--------------------------------")
+    number = random.randrange(0,3)
+    string = madlibsTemplates.templates[number]
+
+    name = input("Enter a name: ")
+    print(string.format(name) + "\n")
 
 def main():
-    madLibs()
-
-
-if __name__ == "__main__":
     print("Welcome!")
     print("1.) Mad Libs")
     print("2.) Random Mad Libs")
     print("3.) Exit Program")
     while True:
-        choice = input("Hi! Enter an option (0 - 2): ")
+        choice = input("Hello! Enter an option (1 - 3): ")
         if choice == "1":
-            main()
+            madLibs()
         elif choice == "2":
-            pass
+            randomMadLibs()
         elif choice == "3":
+            print("Exiting program now...")
             break
         else:
             print("Invalid Option. Please enter again!")
+
+
+if __name__ == "__main__":
+    main()
