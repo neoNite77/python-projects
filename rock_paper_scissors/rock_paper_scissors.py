@@ -10,7 +10,7 @@ import random
     postcondition: returns a string value determining the outcome of the game
 """
 def play():
-    user = input("What is your choice?\n'r' for rock, 'p' for paper, 's' for scissors: \n").lower()
+    user = input("\nWhat is your choice?\n'r' for rock, 'p' for paper, 's' for scissors: \n").lower()
     while user != 'r' and user != 'p' and user != 's':
         user = input("Invalid choice!!! \nChoose 'r' for rock, 'p' for paper, 's' for scissors: \n").lower()
     computer = random.choice(['r', 'p', 's'])
@@ -43,18 +43,33 @@ def is_win(player, opponent):
     postcondition: return a string value
 """
 def display_match_up(player, opponent):
-    return f'Player Chose: {player} | OpponentsChose: {opponent}'
-    
-def number_of_rounds():
-    number = int(input("Enter the number of rounds you would like to play: "))
-    return number
+    return f'Player Chose: {player} | Opponent Chose: {opponent}'
 
+"""
+    Return a int value containing the number of rounds to play the game
+
+    postcondition: return an integer value
+"""
+def number_of_rounds():
+    while True:
+        number = input("Enter the number of rounds you would like to play: ")
+        if number.isdigit():
+            return int(number)
+        else:
+            print("Please enter a valid integer for the number of rounds to play the game.")
+
+"""
+    Display menu options
+"""
 def display_menu_option():
     print("Welcome to Rock Paper Scissors")
     print("------------------------------")
     print("1.) Play game")
     print("2.) Exit")
     
+"""
+    Initiate menu to start the game
+"""
 def main():
     display_menu_option()
     while True:
