@@ -1,5 +1,6 @@
 """
     Date: June 22, 2023
+    Updated: June 26, 2023
     Description: Play a game of hangman and be able to guess the word that the computer has chosen!
 """
 import random
@@ -19,7 +20,7 @@ def get_valid_word(wordList):
     # Keep iterating through the list until it reaches a word that doesn't have a space or dash in it.
     while '-' in word or ' ' in word:
         word = random.choice(wordList)
-    return word
+    return word.upper()
 
 
 """
@@ -42,17 +43,22 @@ def hangman(p1):
         # What current word is (ie. W - R D)
         word_list = [letter if letter in used_letters else '-' for letter in word]
         print("Current word: ", " ".join(word_list))
+        
         # getting user input
-        user_letter = input("Guess a letter: ").upper()
-        if user_letter in alphabet - used_letters:
-            used_letters.add(user_letter)
-            if user_letter in word_letters:
-                word_letters.remove(user_letter)
+        guessed_letter = input("Guess a letter: ").upper()
+        # Checks if the user only entered one letter
+        if len(guessed_letter) > 1:
+            print("Please enter one character only. Please try again: ")
+            continue 
+        if guessed_letter in alphabet - used_letters:
+            used_letters.add(guessed_letter)
+            if guessed_letter in word_letters:
+                word_letters.remove(guessed_letter)
             else:
                 #take away a life if wrong
                 p1.lives = p1.lives - 1
                 print("Letter is not in word.")
-        elif user_letter in used_letters:
+        elif guessed_letter in used_letters:
             print("You have already used that character. Please try again.")
         else:
             print("Invalid character. Please try again.")
