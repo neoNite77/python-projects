@@ -84,7 +84,7 @@ def play(game, x_player, o_player, print_game=True):
     # which breaks the loop)
     while game.empty_squares():
         # get the move from appropriate player
-        if letter == '0':
+        if letter == 'O':
             square = o_player.get_move(game)
         else:
             square = x_player.get_move(game)
@@ -93,9 +93,9 @@ def play(game, x_player, o_player, print_game=True):
         if game.make_move(square, letter):
             # returns the winner of the game! or None for a tie
             if print_game:
-                print(letter + ' makes a move to square {square}')
+                print(letter + f' makes a move to square {square}')
                 game.print_board()
-                print("") #Empty line
+                print("") #Empty
 
             if game.current_winner:
                 if print_game:
@@ -103,7 +103,7 @@ def play(game, x_player, o_player, print_game=True):
                 return letter
 
             # after we made our move, we need to alternate letters
-            letter = '0' if letter == 'X' else 'X' #s switches player
+            letter = 'O' if letter == 'X' else 'X' #s switches player
             # Alternative method
             #  if letter == 'X':
             #     letter = '0'
