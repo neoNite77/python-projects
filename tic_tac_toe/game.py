@@ -1,6 +1,8 @@
+import time
+
 class TicTacToe:
     def __init__(self):
-        self.board = [' ' for _ in range(9)] # Use a list to represent a 3 X 3 board
+        self.board = [" "] * 9 # Use a list to represent a 3 X 3 board
         self.current_winner = None # Keep track of winner
 
     def print_board(self):
@@ -97,7 +99,7 @@ def play(game, x_player, o_player, print_game=True):
 
             if game.current_winner:
                 if print_game:
-                    print(letter + "wins!")
+                    print(letter + " wins!")
                 return letter
 
             # after we made our move, we need to alternate letters
@@ -107,6 +109,9 @@ def play(game, x_player, o_player, print_game=True):
             #     letter = '0'
             # else:
             #     letter = 'X'
+        
+        # Tiny break to make things easier to read
+        time.sleep(1)
 
-            if print_game:
-                print("It\'s a tie!")
+    if print_game:
+        print("It\'s a tie!")
