@@ -1,4 +1,5 @@
 from calculator import Calculator
+import sys
 
 def display_menu():
     print("Welcome to the Calculator App!")
@@ -12,6 +13,9 @@ def get_number_input(prompt):
             return int(input(prompt))
         except ValueError:
             print("Invalid input. Please enter an integer.")
+        except KeyboardInterrupt:
+            print("\nProgram interrupted by user. Exiting Calculator...")
+            sys.exit(0)  # Exit the program
 
 def main():
     while True:

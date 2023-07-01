@@ -1,5 +1,6 @@
 from operations import Operations
 import time
+import sys
 
 class Calculator():
 
@@ -54,9 +55,10 @@ class Calculator():
                 break
             else:
                 print("Invalid input. Please try again")
+                continue # Skip rest of the loop and restart menu
             print(f"Result: {result}")
             # Delay process by one second
-            time.sleep(1)
+            time.sleep(0.8)
 
     def get_number_input(self, prompt):
         while True:
@@ -64,6 +66,9 @@ class Calculator():
                 return int(input(prompt))
             except ValueError:
                 print("Invalid input. Please enter an integer.")
+            except KeyboardInterrupt:
+                print("\nProgram interrupted by user. Exiting Calculator...")
+                sys.exit(0)  # Exit the program
     
     def get_two_numbers(self):
         num1 = int(self.get_number_input("Enter the first number: "))
