@@ -8,13 +8,16 @@ from player import Human, Computer, GeniusComputer
 import game
 import time
 
-def main():
+def display_menu_option():
     print("Hello welcome to Tic Tac Toe!")
     print("-----------------------------")
     print("1.) Play against regular computer")
     print("2.) Play against genius computer")
     print("3.) Regular computer VS. genius computer")
     print("4.) Exit Program")
+
+def main():
+    display_menu_option()
     while True:
         choice = int(input("Enter a menu option: "))
         if choice == 1:
@@ -25,6 +28,7 @@ def main():
             o_player = Computer("O")
             t = game.TicTacToe()
             game.play(t, x_player, o_player, print_game=True)
+            display_menu_option()
         elif choice == 2:
             print("Starting game...")
             print("You are Player X")
@@ -33,6 +37,7 @@ def main():
             o_player = GeniusComputer("O")
             t = game.TicTacToe()
             game.play(t, x_player, o_player, print_game=True)
+            display_menu_option()
         elif choice == 3:
             print("Starting game...")
             print(f"Regular Computer: X")
@@ -53,13 +58,15 @@ def main():
                     ties += 1
 
             print(f"After 10 iterations, here is the score distributions: \
-                \nX Wins: {x_wins} | O Wins: {o_wins} | Ties: {ties}")
+                \nX Wins: {x_wins} | O Wins: {o_wins} | Ties: {ties}\n")
+            display_menu_option()
 
         elif choice == 4:
             print("Exiting Program now...")
             break
         else:
-            print("Invalid Menu Option entered. Please try again.")    
+            print("Invalid Menu Option entered. Please try again.\n")
+            display_menu_option()    
 
 if __name__ == "__main__":
     main()
