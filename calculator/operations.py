@@ -14,7 +14,7 @@ class Operations():
         if b != 0:
             return a / b
         else:
-            raise ValueError("Error: Can not divide by 0")
+            raise ZeroDivisionError("Error: Can not divide by zero")
         
     def square(self, a):
         return a**2
@@ -24,5 +24,5 @@ class Operations():
     
     def square_root(self, a):
         if a < 0:
-            raise ValueError("Cannot take the square root of a negative number.")
+           raise ValueError("Error: Cannot calculate square root of a negative number.")
         return math.sqrt(a)

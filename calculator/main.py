@@ -6,13 +6,21 @@ def display_menu():
     print("1.) Use Simple Calculator")
     print("2.) Exit")
 
-def main():
-    display_menu()
+def get_number_input(prompt):
     while True:
-        choice = int(input("Enter a menu option: "))
+        try:
+            return int(input(prompt))
+        except ValueError:
+            print("Invalid input. Please enter an integer.")
+
+def main():
+    while True:
+        display_menu()
+        choice = int(get_number_input("Enter a menu option: "))
         if choice == 1:
-            Calculator.menu()
-            Calculator.choice()
+            calculator = Calculator()
+            calculator.menu()
+            calculator.choice()
         elif choice == 2:
             print("Exiting program...")
             break
