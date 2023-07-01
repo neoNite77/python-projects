@@ -1,3 +1,8 @@
+"""
+    Date: June 30, 2023
+    Description: Simple calculator performing basic operations
+"""
+
 from calculator import Calculator
 import sys
 
